@@ -22,7 +22,6 @@ const postUser = asyncHandler(async (req,res)=>{
     }
     //Hash password
     const hashedPassword=await bcrypt.hash(password,10);
-    console.log(hashedPassword);
     const user=await User.create({
         username,
         email,
@@ -62,7 +61,7 @@ if(user&& (await bcrypt.compare(password,user.password))){
         },
     },
     process.env.ACCESS_TOKEN_SECRET,
-    {expiresIn:"1m"}
+    {expiresIn:"19m"}
     );
     res.status(200).json({acessToken});
 }

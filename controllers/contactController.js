@@ -2,17 +2,17 @@ const asyncHandler=require("express-async-handler");
 const Contact=require("../models/contactModel");
 //@dec Get all contacts 
 //@route Get /api/contacts
-//@access public
+//@access private
 
 const getContact = asyncHandler(async (req,res)=>{
-    const contacts=await Contact.find();
+    const contacts=await Contact.find({user_id:req.user.id});
 
     res.status(200).json(contacts);
 });
 
 //@dec Post all contacts 
 //@route Post /api/contacts
-//@access public
+//@access private
 
 const postContact = asyncHandler(async (req,res)=>{
 
@@ -25,6 +25,7 @@ const postContact = asyncHandler(async (req,res)=>{
         name,
         email,
         phone,
+        user_id:req.user.id,
     });
     res.status(201).json(contact);
 });
@@ -32,7 +33,7 @@ const postContact = asyncHandler(async (req,res)=>{
 
 //@dec Delete contact by id
 //@route Delete /api/contacts/id
-//@access public
+//@access private
 
 const deleteContact = asyncHandler(async (req,res)=>{
     const contact=await Contact.findById(req.params.id);
@@ -40,13 +41,17 @@ const deleteContact = asyncHandler(async (req,res)=>{
         res.status(404);
         throw new Error("Contact not found");
     }
+    if(contact.user_id.toString()!==req.user.id){
+        res.status(403);
+        throw new MongoExpiredSessionError("User don't have permission to update other user contact");
+      }
     await Contact.deleteOne(contact);
     res.status(200).json(contact);
 });
 
 //@dec Get contact by id 
 //@route Get /api/contacts/id
-//@access public
+//@access private
 
 const getByContact = asyncHandler(async (req,res)=>{
     const contact=await Contact.findById(req.params.id);
@@ -59,7 +64,7 @@ const getByContact = asyncHandler(async (req,res)=>{
 
 //@dec Update contact by id 
 //@route Put /api/contacts/id
-//@access public
+//@access private
 
 const updateContact = asyncHandler(async (req,res)=>{
     const contact=await Contact.findById(req.params.id);
@@ -67,6 +72,13 @@ const updateContact = asyncHandler(async (req,res)=>{
         res.status(404);
         throw new Error("Contact not found");
     }
+
+  if(contact.user_id.toString()!==req.user.id){
+    res.status(403);
+    throw new MongoExpiredSessionError("User don't have permission to update other user contact");
+  }
+
+
     const updatedContact=await Contact.findByIdAndUpdate(
             req.params.id,
             req.body,
