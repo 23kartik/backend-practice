@@ -77,14 +77,10 @@ if(user&& (await bcrypt.compare(password,user.password))){
 });
 //@dec Current user info 
 //@route Post /api/Users/current
-//@access public
+//@access private
 
 const currentUser = asyncHandler(async (req,res)=>{
-    const {username,email,password}=req.body;
-    if(!username||!email||!password){
-        res.status(400);
-        throw new Error("All fields are mandatory");
-    }
+    
     res.json({mesaage:"Current user"})
 
 });
