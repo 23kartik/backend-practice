@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="0.488">
+  <testsuite name="User Controller Tests" errors="0" failures="0" skipped="0" timestamp="2023-09-19T11:57:12" time="0.355" tests="2">
+    <testcase classname="User Controller Tests postUser Function should create a new user" name="User Controller Tests postUser Function should create a new user" time="0.059">
+    </testcase>
+    <testcase classname="User Controller Tests loginUser Function should log in a user" name="User Controller Tests loginUser Function should log in a user" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Contact Controller Tests" errors="0" failures="0" skipped="0" timestamp="2023-09-19T11:57:12" time="0.115" tests="5">
+    <testcase classname="Contact Controller Tests getContact Function should get all contacts for a user" name="Contact Controller Tests getContact Function should get all contacts for a user" time="0.002">
+    </testcase>
+    <testcase classname="Contact Controller Tests postContact Function should create a new contact" name="Contact Controller Tests postContact Function should create a new contact" time="0">
+    </testcase>
+    <testcase classname="Contact Controller Tests deleteContact Function should delete a contact by ID" name="Contact Controller Tests deleteContact Function should delete a contact by ID" time="0">
+    </testcase>
+    <testcase classname="Contact Controller Tests getByContact Function should get a contact by ID" name="Contact Controller Tests getByContact Function should get a contact by ID" time="0">
+    </testcase>
+    <testcase classname="Contact Controller Tests updateContact Function should update a contact by ID" name="Contact Controller Tests updateContact Function should update a contact by ID" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

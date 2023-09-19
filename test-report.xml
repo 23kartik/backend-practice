@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/Users/kartiketiwari/Desktop/backend-practice/controllers/userController.test.js">
+    <testCase name="User Controller Tests postUser Function should create a new user" duration="59"/>
+    <testCase name="User Controller Tests loginUser Function should log in a user" duration="1"/>
+  </file>
+  <file path="/Users/kartiketiwari/Desktop/backend-practice/controllers/contactController.test.js">
+    <testCase name="Contact Controller Tests getContact Function should get all contacts for a user" duration="2"/>
+    <testCase name="Contact Controller Tests postContact Function should create a new contact" duration="0"/>
+    <testCase name="Contact Controller Tests deleteContact Function should delete a contact by ID" duration="0"/>
+    <testCase name="Contact Controller Tests getByContact Function should get a contact by ID" duration="0"/>
+    <testCase name="Contact Controller Tests updateContact Function should update a contact by ID" duration="1"/>
+  </file>
+</testExecutions>

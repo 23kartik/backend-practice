@@ -53,7 +53,7 @@ const user=await User.findOne({email});
 
 //compare password with hashed password
 if(user&& (await bcrypt.compare(password,user.password))){
-    const acessToken=jwt.sign({
+    const accessToken=jwt.sign({
         user:{
             username:user.username,
             email:user.email,
@@ -63,7 +63,7 @@ if(user&& (await bcrypt.compare(password,user.password))){
     process.env.ACCESS_TOKEN_SECRET,
     {expiresIn:"19m"}
     );
-    res.status(200).json({acessToken});
+    res.status(200).json({accessToken});
 }
     else{
         res.status(401);
