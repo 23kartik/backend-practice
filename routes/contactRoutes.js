@@ -9,6 +9,7 @@ const {
   updateContact,
 } = require("../controllers/contactController");
 const validateToken = require("../middleware/validateTokenHandler");
+router.use(validateToken);
 
 /**
  * @swagger
