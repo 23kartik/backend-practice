@@ -8,6 +8,15 @@ const options = {
       version: '1.0.0',
       description: 'Documentation for your Contact API',
     },
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   apis: ['./routes/contactRoutes.js', './routes/userRoutes.js'],
 };
